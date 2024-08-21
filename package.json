@@ -26,5 +26,6 @@
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.3",
     "pino-http": "^10.2.0"
-  }
+  },
+  "description": ""
 }
