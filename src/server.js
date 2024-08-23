@@ -35,21 +35,6 @@ export const startServer = () => {
   // Додаємо роутер
   app.use(contactsRouter);
 
-  // Обробник для неіснуючих маршрутів
-  app.use('*', (req, res) => {
-    res.status(404).json({
-      message: 'Not found',
-    });
-  });
-
-  // Глобальний обробник помилок
-  app.use((err, req, res) => {
-    res.status(500).json({
-      message: 'Something went wrong',
-      error: err.message,
-    });
-  });
-
   app.use('*', notFoundHandler);
 
   app.use(errorHandler);
