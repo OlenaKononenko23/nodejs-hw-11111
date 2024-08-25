@@ -10,7 +10,7 @@ import { UPLOAD_DIR } from './constants/index.js';
 
 const PORT = Number(env('PORT', '3000'));
 
-export const setupServer = () => {
+export const startServer = () => {
   const app = express();
 
   app.use(express.json());
