@@ -14,56 +14,37 @@ requestBody:
           - name
           - phoneNumber
           - contactType
-          - userId
         properties:
           name:
             description: "Contact's name"
             type: string
-            example: 'Oleh Tkachuk'
+            example: 'John Doe'
           phoneNumber:
-            description: "Contact's phonenumber"
+            description: "Contact's phone number"
             type: string
-            example: '+380995554456'
+            example: '8494358395'
           email:
             description: "Contact's email"
             type: string
-            example: 'dmytro3@example.com'
+            default: 'user@gmail.com'
+            example: 'john.doe@example.com'
+          isFavourite:
+            description: 'Shows if the contact is marked as a favorite'
+            type: boolean
+            default: false
+            example: false
           contactType:
-            description: 'What type of contact is this'
+            description: "Contact's type"
             type: string
             enum: ['work', 'home', 'personal']
-          isFavourite:
-            description: 'Whether is contact favourite'
-            type: boolean
-            example: true
-          userId:
-            description: "User's id"
-            type: string
-            example: 66b68bf3715215e8a074219e
+            default: 'personal'
+            example: 'personal'
           photo:
-            description: "Link to contact's photo"
+            description: "Contact's photo"
             type: string
-            example: https://res.cloudinary.com/dim9kuj10/image/upload/v1723465603/daaqiw5j255soydp6dsu.jpg
+            format: binary
 responses:
   '201':
-    description: Creates a contact
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - status
-            - message
-            - data
-          properties:
-            status:
-              type: integer
-              example: 201
-            message:
-              type: string
-              example: Successfully created a contact!
-            data:
-              type: object
-              $ref: '../../components/schemas/contact.yaml'
+    $ref: '../../components/responses/201.yaml'
   '401':
     $ref: '../../components/responses/401.yaml'

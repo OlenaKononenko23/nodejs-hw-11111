@@ -1,42 +1,31 @@
 tags:
   - Auth
-summary: Reset password
+summary: Reset user password
 operationId: resetPassword
-description: 'Reset password'
+description: 'Reset the user password with using reset token'
 security:
   - bearerAuth: []
 requestBody:
+  description: Reset password details
+  required: true
   content:
     application/json:
       schema:
         type: object
-        required:
-          - token
-          - password
         properties:
           token:
             type: string
           password:
             type: string
+        required:
+          - token
+          - password
 responses:
   '200':
-    description: 'Password was successfully reset!'
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - status
-            - message
-            - data
-          properties:
-            status:
-              type: integer
-              example: 200
-            message:
-              type: string
-              example: Password was successfully reset!
-            data:
-              type: object
+    description: Password successfully reset
+  '400':
+    description: Bad request
   '401':
-    $ref: '../../components/responses/401.yaml'
+    description: Unauthorized - Invalid token
+  '404':
+    description: User not found

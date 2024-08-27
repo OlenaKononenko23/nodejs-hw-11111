@@ -2,26 +2,31 @@ tags:
   - Contacts
 summary: Get list of contacts
 operationId: getContacts
-description: 'Get list of contacts with this endpoint'
+description: 'Get list of all contacts'
 security:
   - bearerAuth: []
 parameters:
   - in: query
     name: page
+    description: Page numbering
+    required: false
     schema:
       type: integer
     example: 1
   - in: query
     name: perPage
+    description: The number of contacts per page
+    required: false
     schema:
       type: integer
       example: 10
   - in: query
     name: sortBy
+    description: Contact sorting
+    required: false
     schema:
       type: string
       example: 'name'
-    description: "All contact's fields can be mentioned. Default value - _id"
   - in: query
     name: sortOrder
     schema:
@@ -29,66 +34,22 @@ parameters:
       enum: ['asc', 'desc']
       example: 'asc'
   - in: query
-    name: isFavourite
-    schema:
-      type: boolean
-      example: false
-  - in: query
     name: contactType
+    description: Filter contacts by type
+    required: false
     schema:
       type: string
       enum: ['work', 'home', 'personal']
-      example: home
+      example: 'personal'
+  - in: query
+    name: isFavourite
+    description: Filter contacts by favourite status
+    required: false
+    schema:
+      type: boolean
+      example: 10
 responses:
   '200':
-    description: Successfully found contacts!
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - status
-            - message
-            - data
-          properties:
-            status:
-              type: integer
-              example: 200
-            message:
-              type: string
-              example: Successfully found contacts!
-            data:
-              type: object
-              required:
-                - data
-                - page
-                - perPage
-                - totalItems
-                - totalPages
-                - hasNextPage
-                - hasPreviousPage
-              properties:
-                data:
-                  type: array
-                  items:
-                    $ref: '../../components/schemas/contact.yaml'
-                page:
-                  type: number
-                  example: 1
-                perPage:
-                  type: number
-                  example: 10
-                totalItems:
-                  type: number
-                  example: 4
-                totalPages:
-                  type: number
-                  example: 1
-                hasNextPage:
-                  type: boolean
-                  example: false
-                hasPreviousPage:
-                  type: boolean
-                  example: false
+    $ref: '../../components/responses/200.yaml'
   '401':
     $ref: '../../components/responses/401.yaml'

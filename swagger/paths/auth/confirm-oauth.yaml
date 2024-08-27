@@ -1,28 +1,25 @@
 tags:
   - Auth
-summary: Refresh user's session
-operationId: refreshUsersSession
-description: 'Refresh the session of user and provide new tokens'
+summary: Login with Google OAuth
+operationId: loginWithGoogle
+description: 'Authenticate user using Google OAuth and create session'
 security:
   - bearerAuth: []
 requestBody:
-  description: Refresh session details
+  description: Google OAuth authorization code
   required: true
   content:
     application/json:
       schema:
         type: object
         properties:
-          sessionId:
-            type: string
-          refreshToken:
+          code:
             type: string
         required:
-          - sessionId
-          - refreshToken
+          - code
 responses:
   '200':
-    description: Successfully refreshed session
+    description: Successfully logged in via Google OAuth
     content:
       application/json:
         schema:
@@ -35,4 +32,4 @@ responses:
   '400':
     description: Bad request
   '401':
-    description: Unauthorized - Invalid session or token
+    description: Unauthorized - Invalid code or OAuth error
