@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "https://example.com/api/v1"
+      "url": "https://nodejs-hw-mongodb-10-eg64.onrender.com"
     }
   ],
   "tags": [
@@ -514,6 +514,7 @@
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
+                    "format": "binary",
                     "example": "https://res.cloudinary.com/dim9kuj10/image/upload/v1723465603/daaqiw5j255soydp6dsu.jpg"
                   }
                 }
@@ -682,6 +683,7 @@
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
+                    "format": "binary",
                     "example": "https://res.cloudinary.com/dim9kuj10/image/upload/v1723465603/daaqiw5j255soydp6dsu.jpg"
                   }
                 }
@@ -842,6 +844,7 @@
           "photo": {
             "description": "Link to contact's photo",
             "type": "string",
+            "format": "binary",
             "example": "https://res.cloudinary.com/dim9kuj10/image/upload/v1723465603/daaqiw5j255soydp6dsu.jpg"
           }
         }
